@@ -1,7 +1,9 @@
-# DATA STRUCTURES & ALGORITHMS IN SWIFT BOOK
+# DATA STRUCTURES & ALGORITHMS IN SWIFT
 
 ## CHAPTER 1
 The study of data structures is one of efficiency. Given a particular amount of data, what is the best to store it to achieve a particular goal?
+
+The trick is to understand what sort of problem you’re dealing with... Once you know what a problem is called, it’s easy to find a solution for it.
 
 ## CHAPTER 2
 
