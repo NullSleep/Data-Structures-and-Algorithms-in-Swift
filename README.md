@@ -1,16 +1,16 @@
 # DATA STRUCTURES & ALGORITHMS IN SWIFT
 
-## CHAPTER 1
+## CHAPTER 1: PREFACE
 The study of data structures is one of efficiency. Given a particular amount of data, what is the best to store it to achieve a particular goal?
 
 The trick is to understand what sort of problem you’re dealing with... Once you know what a problem is called, it’s easy to find a solution for it.
 
-## CHAPTER 2
-
-The study of data structures is one of efficiency. Given a particular amount of data, what is the best way to store it to achieve a particular goal?
+## CHAPTER 2: SWIFT STANDARD LIBRARY
 
 ### Arrays
-The most efficient for  adding an element to an Arrays is to append it at the end of the array:
+Swift defines arrays using protocols. Each of these protocols layers more capabilities on the array. For example, an Array is a Sequence, which means that you can iterate through it at least once. It is also a Collection, which means it can be traversed multiple times, non-destructively, and it can be accessed using a subscript operator. An array is also a RandomAccessCollection, which makes guarantees about efficiency.
+
+The most efficient scenario for  adding an element to an Arrays is to append it at the end of the array:
 
 ```
 let people = ["Brian", "Stanley", "Ringo"]
@@ -20,7 +20,7 @@ people.append("Charles")
 
 Inserting "Charles" using the append method will place the string at the end of the array. This is a constant-time operation, meaning the time it takes to perform this operation stays the same no matter how large the array becomes. However, there may come a time that you need to insert an element in a particular location, such as in the very middle of the array.
 
-This is exactly how the array works. Inserting new elements from anywhere aside from the end of the array will force elements to shuffle backwards to make room for the new element:
+Inserting new elements from anywhere aside from the end of the array will force elements to shuffle backwards to make room for the new element:
 
 ```
 people.insert("Andy", at: 0)
@@ -48,11 +48,19 @@ The lack of explicit ordering disadvantage comes with some redeeming traits. Unl
 - Dictionary trades away the ability to maintain the order of its elements for fast insertion and searching.
 
 
-## CHAPTER 3
+## CHAPTER 3: COMPLEXITY
 
 Will it scale?
 
 This age-old question is always asked during the design phase of software development and comes in several flavors. For instance, from an architectural standpoint, scalability refers to how flexible your app is as your feature set increases. From a database standpoint, scalability is about the capability of a database to handle an increasing amount of data and users.
 
 For algorithms, scalability refers to how the algorithm performs in terms of execution time and memory usage as the input size increases.
-When you're working with a small amount of data, an expensive algorithm may still feel fast. However, as the amount of data increases, an expensive algorithm becomes crippling. So how bad can it get? Understanding how to quantify this is an important skill for you to know.
+
+### Time Complexity
+For small amounts of data, even the most expensive algorithm can seem fast due to the speed of modern hardware. However, as data increases, cost of an expensive algorithm becomes increasingly apparent. Time complexity is a measure of the time required to run an algorithm as the input size increases.
+
+#### Constant time
+A constant time algorithm is one that has the same running time regardless of the size of the input. The Big O notation for constant time is O(1).
+
+#### Linear time
+As the input array increases in size, the number of iterations that the for loop makes is increased by the same amount.
