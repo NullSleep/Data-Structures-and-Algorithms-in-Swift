@@ -64,3 +64,7 @@ A constant time algorithm is one that has the same running time regardless of th
 
 #### Linear time
 As the input array increases in size, the number of iterations that the for loop makes is increased by the same amount.
+
+As the amount of data increases, the running time increases by the same amount. That's why you have the straight linear graph illustrated above. The Big O notation for linear time is O(n).
+
+Time complexity only gives a high-level shape of the performance, so loops that happen a set number of times are not part of the calculation. All constants are dropped in the final Big O notation. In other words, O(2n + 6) is surprisingly equal to O(n).
