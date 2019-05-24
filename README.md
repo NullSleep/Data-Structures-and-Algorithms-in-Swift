@@ -68,3 +68,94 @@ As the input array increases in size, the number of iterations that the for loop
 As the amount of data increases, the running time increases by the same amount. That's why you have the straight linear graph illustrated above. The Big O notation for linear time is O(n).
 
 Time complexity only gives a high-level shape of the performance, so loops that happen a set number of times are not part of the calculation. All constants are dropped in the final Big O notation. In other words, O(2n + 6) is surprisingly equal to O(n).
+
+#### Quadratic time
+More commonly referred to as n squared, this time complexity refers to an algorithm that takes time proportional to the square of the input size.
+
+The Big O notation for quadratic time is O(n^2).
+
+No matter how inefficiently a linear time xO(n) is written (multiple passes etc), for a sufficiently large n, the linear time algorithm will execute faster than a super optimized quadratic algorithm. Always. Every time.
+
+#### Logarithmic time
+There are scenarios in which only a subset of the input needs to be inspected, leading to a faster runtime.
+
+Algorithms that belong to this category of time complexity are ones that can leverage some shortcuts by making some assumptions about the input data
+
+An algorithm that can repeatedly drop half of the required comparisons will have logarithmic time complexity. As input data increases, the time it takes to execute the algorithm increases at a slow rate.
+
+The Big O notation for logarithmic time complexity is O(log n).
+
+#### Quasilinear time
+Another common time complexity you'll encounter is quasilinear time. Quasilinear time algorithms perform worse than linear time but dramatically better than quadratic time. They are among the most common algorithms you'll deal with. An example of a quasilinear time algorithm is Swift's sort method.
+
+The Big-O notation for quasilinear time complexity is O(n log n) which is a multiplication of linear and logarithmic time. So quasilinear fits doesn't fit between logarithmic and linear time; it is a magnitude worse than linear time.
+
+#### Other time complexities
+
+Other time complexities do exist, but are far less common and tackle more complex problems that are not discussed in this book. These time complexities include polynomial time, exponential time, factorial time and more.
+
+It is important to note that time complexity is a high-level overview of performance, and it doesn't judge the speed of the algorithm beyond the general ranking scheme. This means that two algorithms can have the same time complexity, but one may still be much faster than the other. For small data sets, time complexity may not be an accurate measure of actual speed.
+
+#### Comparing time complexity
+
+Suppose you wrote the following code that finds the sum of numbers from 1 to n.
+
+```
+func sumFromOne(upto n: Int) -> Int {
+  var result = 0
+  for i in 1...n {
+    result += i
+  }
+  return result
+}
+sumFromOne(upto: 10000)
+```
+
+The code loops 10000 times and returns 50005000. It is O(n) and will take a moment to run in a playground as it counts through the loop and prints results.
+You can write another version:
+
+```
+func sumForOne(upto n: Int) -> Int {
+  return (1...n).reduce(0, +)
+}
+sumFromOne(upto: 10000)
+```
+
+In a playground this will run faster because it calls compiled code in standard library. However, if you look up the time complexity for reduce, you'll discover that it is also O(n) as it calls the + method n times. It is the same Big O, but has smaller constants because it is compiled code.
+
+Finally, you can write:
+
+```
+func sumFromOne(upto n: Int) -> Int {
+  return (n + 1) * n / 2
+}
+```
+
+This version of the function uses a trick that the Fredrick Gauss noticed in elementary school. Namely, you can compute the sum using simple arithmetic. This final version of the algorithm is O(1) and tough to beat. A constant time algorithm is always preferred. If you put this version in a loop you still end up with linear time. The previous O(n) versions are just one outer loop away from slow, quadratic time.
+
+### Space Complexity
+The time complexity of an algorithm can help predict scalability, but it isn't the only metric. Space complexity is a measure of the resources required for the algorithm to run. For computers, the resources for algorithms is memory.
+
+To calculate the space complexity, you analyze the memory allocations for the function.
+
+
+## CHAPTER 4: LINKED LISTS
+A linked list is a collection of values arranged in a linear unidirectional sequence. A linked list has several theoretical advantages over contiguous storage options such as the Swift Array:
+- Constant time insertion and removal from the front of the list.
+- Reliable performance characteristics.
+
+[12] -> [1] -> [3] ->
+
+As the diagram suggests, a linked list is a chain of nodes. Nodes have two responsibilities:
+- Hold a value.
+- Hold a reference to the next node. A nil value represents the end of the list.
+
+A linked list has the concept of a head and tail, which refers to the first and last nodes of the list respectively.
+
+There are three ways to add values to a linked list, each having their own unique performance characteristics:
+- push: Adds a value at the front of the list.
+- append: Adds a value at the end of the list.
+- insert(after:): Adds a value after a particular node of the list.
+
+### “push operations
+Adding a value at the front of the list is known as a push operation. This is also known as head-first insertion.
