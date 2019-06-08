@@ -1,7 +1,11 @@
 # DATA STRUCTURES & ALGORITHMS IN SWIFT
 
 ## CHAPTER 1: PREFACE
+In most cases, there’s no need to derive a solution by yourself from first principles! Often, these problems have already been solved many times before by other people, and they have well-known solutions. The trick is to understand what sort of problem you’re dealing with — and that’s where learning about algorithms and data structures pays off. Once you know what a problem is called, it’s easy to find a solution for it.
+
 The study of data structures is one of efficiency. Given a particular amount of data, what is the best to store it to achieve a particular goal?
+
+Using an appropriate data structure is crucial when working with lots of data. Using the right algorithm plays a significant role in the performance and scalability of your software. Your mobile apps will be more responsive and have better battery life. Your server apps will be able to handle more concurrent requests and use less energy. Algorithms often include proofs of correctness that you can leverage to build better software.
 
 The trick is to understand what sort of problem you’re dealing with... Once you know what a problem is called, it’s easy to find a solution for it.
 
@@ -10,7 +14,11 @@ The trick is to understand what sort of problem you’re dealing with... Once yo
 ### Arrays
 Swift defines arrays using protocols. Each of these protocols layers more capabilities on the array. For example, an Array is a Sequence, which means that you can iterate through it at least once. It is also a Collection, which means it can be traversed multiple times, non-destructively, and it can be accessed using a subscript operator. An array is also a RandomAccessCollection, which makes guarantees about efficiency.
 
-The most efficient scenario for  adding an element to an Arrays is to append it at the end of the array:
+Random-access is a trait that data structures can claim if they can handle element retrieval in a constant amount of time. Getting an element from an array using it's subscript (i.e. array[2]) takes constant time. Again, this performance should not be taken for granted. Other data structures such as linked lists and trees do not have constant time access.
+
+There are other areas of performance that are of interest to you as a developer, particularly, how well or poorly does the data structure fare when the amount of data it contains needs to grow? For arrays, this varies on two factors: Insertion and capacity.
+
+The most efficient scenario for adding an element to an Arrays is to append it at the end of the array:
 
 ```
 let people = ["Brian", "Stanley", "Ringo"]
@@ -36,6 +44,10 @@ The second factor that determines the speed of insertion is the array’s capaci
 This means that any insertion, even at the end, could take n steps to complete if a copy is made. However, the standard library employs a strategy that minimizes the times this copying needs to occur. Each time it runs out of storage and needs to copy, it doubles the capacity.
 
 ### Dictionaries
+```
+var score: [String: Int] = ["Eric": 9, "Mark": 7, "Pepe": 1]
+```
+
 Dictionaries don’t have any guarantees of order, nor can you insert at a specific index. They also put a requirement on the Key type that it be Hashable. Fortunately almost all of the standard types are already Hashable and in the most recent versions Swift, adopting the Hashable protocol is now trivial.
 
 Dictionaries are unordered, so you can’t guarantee where new entries will be put. It is possible to traverse through the key-values of a dictionary multiple times as the Collection protocol affords. This order, while not defined, will be the same every time it is traversed until the collection is changed (mutated).
