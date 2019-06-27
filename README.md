@@ -1,9 +1,9 @@
 # DATA STRUCTURES & ALGORITHMS IN SWIFT
 
 ## CHAPTER 1: PREFACE
-In most cases, there’s no need to derive a solution by yourself from first principles! Often, these problems have already been solved many times before by other people, and they have well-known solutions. The trick is to understand what sort of problem you’re dealing with — and that’s where learning about algorithms and data structures pays off. Once you know what a problem is called, it’s easy to find a solution for it.
-
 The study of data structures is one of efficiency. Given a particular amount of data, what is the best to store it to achieve a particular goal?
+
+> In most cases, there’s no need to derive a solution by yourself from first principles! Often, these problems have already been solved many times before by other people, and they have well-known solutions. The trick is to understand what sort of problem you’re dealing with — and that’s where learning about algorithms and data structures pays off. Once you know what a problem is called, it’s easy to find a solution for it.
 
 Using an appropriate data structure is crucial when working with lots of data. Using the right algorithm plays a significant role in the performance and scalability of your software. Your mobile apps will be more responsive and have better battery life. Your server apps will be able to handle more concurrent requests and use less energy. Algorithms often include proofs of correctness that you can leverage to build better software.
 
@@ -12,6 +12,8 @@ The trick is to understand what sort of problem you’re dealing with... Once yo
 ## CHAPTER 2: SWIFT STANDARD LIBRARY
 
 ### Arrays
+An array is a general-purpose, generic container for storing an ordered collection of elements.
+
 Swift defines arrays using protocols. Each of these protocols layers more capabilities on the array. For example, an Array is a Sequence, which means that you can iterate through it at least once. It is also a Collection, which means it can be traversed multiple times, non-destructively, and it can be accessed using a subscript operator. An array is also a RandomAccessCollection, which makes guarantees about efficiency.
 
 Random-access is a trait that data structures can claim if they can handle element retrieval in a constant amount of time. Getting an element from an array using it's subscript (i.e. array[2]) takes constant time. Again, this performance should not be taken for granted. Other data structures such as linked lists and trees do not have constant time access.
