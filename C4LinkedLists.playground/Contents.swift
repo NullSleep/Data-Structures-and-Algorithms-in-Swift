@@ -14,3 +14,12 @@ example(of: "Creating and linking nodes") {
   
   print(node1)
 }
+
+example(of: "LinkedList push") {
+  var list = LinkedList<Int>()
+  list.push(3)
+  list.push(2)
+  list.push(1)
+  
+  print(list)
+}

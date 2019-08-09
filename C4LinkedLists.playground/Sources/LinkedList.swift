@@ -12,7 +12,17 @@ public struct LinkedList<Value> {
   public var isEmpty: Bool {
     return head = nil
   }
+  
+  // Adding a value at the front of the list is known as a push operation. This is also known as head-first insertion.
+  public mutating func push(_ value: Value) {
+    // In the case in which you’re pushing into an empty list, the new node is both the head and tail of the list.
+    head = Node(value: value, next: head)
+    if tail == nil {
+      tail = head
+    }
+  }
 }
+
 extension LinkedList: CustomStringConvertible {
   
   public var description: String {
