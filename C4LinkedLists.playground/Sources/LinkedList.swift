@@ -13,6 +13,7 @@ public struct LinkedList<Value> {
     return head == nil
   }
   
+  // PUSH
   // Adding a value at the front of the list is known as a push operation. This is also known as head-first insertion.
   public mutating func push(_ value: Value) {
     // In the case in which you’re pushing into an empty list, the new node is both the head and tail of the list.
@@ -22,7 +23,8 @@ public struct LinkedList<Value> {
     }
   }
   
-  // Append operations. This is meant to add a value at the end of the list, and it is known as tail-end insertion.
+  // APPENDING
+  // Append operation. This is meant to add a value at the end of the list, and it is known as tail-end insertion.
   public mutating func append(_ value: Value) {
     // If the list is emoty, you'll need to update both head and tail to the new node. Since append on an empty list is functionally indentical to push, you simply invoke push to do the work.
     guard !isEmpty else {
@@ -35,6 +37,42 @@ public struct LinkedList<Value> {
     
     // Since this is tail-end insertion, your new node is also the tail of the list.
     tail = tail!.next
+  }
+  
+  // INSERT
+  // “This operation inserts a value at a particular place in the list, and requires two steps: Finding a particular node in the list; Inserting the new node.
+  
+  // First, you’ll implement the code to find the node where you want to insert your value. This function will try to retrieve a node in the list based on the given index. Since you can only access the nodes of the list from the head node, you’ll have to make iterative traversals.
+  public func node(at index: Int) -> Node<Value>? {
+    
+    // You create a new reference to head and keep track of the current number of traversals.
+    var currentNode = head
+    var currentIndex = 0
+    
+    // Using a while loop, you move the reference down the list until you’ve reached the desired index. Empty lists or out-of-bounds indexes will result in a nil return value.
+    while currentNode != nil && currentIndex < index {
+      currentNode = currentNode!.next
+      currentIndex += 1
+    }
+    
+    return currentNode
+  }
+  
+  // Now inserting the new node
+  
+  // @discardableResult lets callers ignore the return value of this method without the compiler jumping up and down warning you about it.
+  @discardableResult public mutating func insert(_ value: Value, after node: Node<Value>) -> Node<Value> {
+    
+    // In the case where this method is called with the tail node, you’ll call the functionally equivalent append method. This will take care of updating tail.
+    guard tail !== node else {
+      append(value)
+      return tail!
+    }
+    
+    // Otherwise, you simply link up the new node with the rest of the list and return the new node.
+    node.next = Node(value: value, next: node.next)
+    
+    return node.next!
   }
   
 }
