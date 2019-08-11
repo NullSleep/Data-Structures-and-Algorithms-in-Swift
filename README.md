@@ -171,5 +171,19 @@ There are three ways to add values to a linked list, each having their own uniqu
 - append: Adds a value at the end of the list.
 - insert(after:): Adds a value after a particular node of the list.
 
-### “push operations
+### Push operation
 Adding a value at the front of the list is known as a push operation. This is also known as head-first insertion.
+
+### Append operation
+This is meant to add a value at the end of the list, and it is known as tail-end insertion.
+
+### Insert operation
+The third and final operation for adding values is insert(after:). This operation inserts a value at a particular place in the list, and requires two steps:
+1. Finding a particular node in the list.
+2. Inserting the new node.
+
+### Performance analysis
+- push -> insert at head -> time complexity: O(1)
+- append -> insert at tail -> time complexity: O(1)
+- insert(after:) -> insert after a node -> time complexity: O(1)
+- node(at:) -> returns a node at given index -> time complexity: O(i) where i is the given index
