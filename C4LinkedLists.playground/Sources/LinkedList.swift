@@ -12,7 +12,10 @@ public struct LinkedList<Value> {
   public var isEmpty: Bool {
     return head == nil
   }
-  
+}
+
+// MARK: - Adding Values
+extension LinkedList {
   // PUSH
   // Adding a value at the front of the list is known as a push operation. This is also known as head-first insertion.
   public mutating func push(_ value: Value) {
@@ -74,9 +77,27 @@ public struct LinkedList<Value> {
     
     return node.next!
   }
+}
+
+// MARK: - Removing Operations
+extension LinkedList {
+  
+  // POP
+  // Removing a value at the front of the list is often referred to as pop. This function returns the value that was removed from the list. This value is optional, since it's possible that the list is empty.
+  @discardableResult public mutating func pop() -> Value? {
+    defer {
+      // By moving the head down a node, you’ve effectively removed the first node of the list. ARC will remove the old node from memory once the method finishes, since there will be no more references attached to it. In the event that the list becomes empty, you set tail to nil.
+      head = head?.next
+      if isEmpty {
+        tail = nil
+      }
+    }
+    return head?.value
+  }
   
 }
 
+// MARK: - Extending LinkedList to conform to CustomStringConvertible
 extension LinkedList: CustomStringConvertible {
   
   public var description: String {

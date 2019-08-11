@@ -15,7 +15,7 @@ example(of: "Creating and linking nodes") {
   print(node1)
 }
 
-// LINKED LIST
+// LINKED LIST ADD OPERATIONS
 
 example(of: "LinkedList: push") {
   var list = LinkedList<Int>()
@@ -47,4 +47,18 @@ example(of: "LinkedList: inserting at a particular index") {
     middleNode = list.insert(-1, after: middleNode)
   }
   print("After inserting: \(list)")
+}
+
+// LINKED LIST REMOVE OPERATIONS
+
+example(of: "LinkedList: pop") {
+  var list = LinkedList<Int>()
+  list.push(3)
+  list.push(2)
+  list.push(1)
+  print("Before popping list: \(list)")
+  
+  let poppedValue = list.pop()
+  print("After popping list: \(list)")
+  print("Popped value: " + String(describing: poppedValue))
 }

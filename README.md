@@ -166,24 +166,34 @@ As the diagram suggests, a linked list is a chain of nodes. Nodes have two respo
 
 A linked list has the concept of a head and tail, which refers to the first and last nodes of the list respectively.
 
+### Adding Values
 There are three ways to add values to a linked list, each having their own unique performance characteristics:
 - push: Adds a value at the front of the list.
 - append: Adds a value at the end of the list.
 - insert(after:): Adds a value after a particular node of the list.
 
-### Push operation
+#### Push operation
 Adding a value at the front of the list is known as a push operation. This is also known as head-first insertion.
 
-### Append operation
+#### Append operation
 This is meant to add a value at the end of the list, and it is known as tail-end insertion.
 
-### Insert operation
+#### Insert operation
 The third and final operation for adding values is insert(after:). This operation inserts a value at a particular place in the list, and requires two steps:
 1. Finding a particular node in the list.
 2. Inserting the new node.
 
-### Performance analysis
+#### Performance analysis
 - push -> insert at head -> time complexity: O(1)
 - append -> insert at tail -> time complexity: O(1)
 - insert(after:) -> insert after a node -> time complexity: O(1)
 - node(at:) -> returns a node at given index -> time complexity: O(i) where i is the given index
+
+### Removing Values
+There are three main operations for removing nodes:
+- pop: Removes the value at the front of the list.
+- removeLast: Removes the value at the end of the list.
+- remove(at:): Removes a value anywhere in the list.
+
+#### Pop operation
+Removing a value at the front of the list is often referred to as pop.
