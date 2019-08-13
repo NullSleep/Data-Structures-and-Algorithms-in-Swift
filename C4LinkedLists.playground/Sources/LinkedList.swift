@@ -95,6 +95,30 @@ extension LinkedList {
     return head?.value
   }
   
+  
+  discardableResult
+  public mutating func removeLast() -> Value? {
+    // 1
+    guard let head = head else {
+      return nil
+    }
+    // 2
+    guard head.next != nil else {
+      return pop()
+    }
+    // 3
+    var prev = head
+    var current = head
+    
+    while let next = current.next {
+      prev = current
+      current = next
+    }
+    // 4
+    prev.next = nil
+    tail = prev
+    return current.value
+  }
 }
 
 // MARK: - Extending LinkedList to conform to CustomStringConvertible
