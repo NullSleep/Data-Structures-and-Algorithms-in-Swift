@@ -59,11 +59,23 @@ example(of: "LinkedList: pop") {
 
 example(of: "LinkedList: removing the last node") {
   var list = createDescendingLinkedList()
-  print("Before popping list: \(list)")
+  print("Before removing the last node: \(list)")
   
   let removedValue = list.removeLast()
   print("After removing last node: \(list)")
   
   print("After removing the last node: \(list)")
+  print("Removed value: " + String(describing: removedValue))
+}
+
+example(of: "LinkedList: remove a node after a particular node") {
+  var list = createDescendingLinkedList()
+  print("Before removing at a particular index: \(list)")
+  
+  let index = 1
+  let node = list.node(at: index - 1)!
+  let removedValue = list.remove(after: node)
+  
+  print("After removing at indecx \(index): \(list)")
   print("Removed value: " + String(describing: removedValue))
 }
