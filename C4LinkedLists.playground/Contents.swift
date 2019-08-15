@@ -36,10 +36,7 @@ example(of: "LinkedList: append") {
 }
 
 example(of: "LinkedList: inserting at a particular index") {
-  var list = LinkedList<Int>()
-  list.push(3)
-  list.push(2)
-  list.push(1)
+  var list = createDescendingLinkedList()
   print("Before inserting: \(list)")
   
   var middleNode = list.node(at: 1)!
@@ -52,13 +49,21 @@ example(of: "LinkedList: inserting at a particular index") {
 // LINKED LIST REMOVE OPERATIONS
 
 example(of: "LinkedList: pop") {
-  var list = LinkedList<Int>()
-  list.push(3)
-  list.push(2)
-  list.push(1)
+  var list = createDescendingLinkedList()
   print("Before popping list: \(list)")
   
   let poppedValue = list.pop()
   print("After popping list: \(list)")
   print("Popped value: " + String(describing: poppedValue))
+}
+
+example(of: "LinkedList: removing the last node") {
+  var list = createDescendingLinkedList()
+  print("Before popping list: \(list)")
+  
+  let removedValue = list.removeLast()
+  print("After removing last node: \(list)")
+  
+  print("After removing the last node: \(list)")
+  print("Removed value: " + String(describing: removedValue))
 }

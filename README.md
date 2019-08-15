@@ -201,3 +201,9 @@ Removing a value at the front of the list is often referred to as pop.
 pop returns the value that was removed from the list. This value is optional, since it’s possible that the list is empty.
 
 By moving the head down a node, you’ve effectively removed the first node of the list. ARC will remove the old node from memory once the method finishes, since there will be no more references attached to it. In the event that the list becomes empty, you set tail to nil.
+
+
+#### Remove last operation
+Removing the last node of the list is somewhat inconvenient. Although you have a reference to the tail node, you can’t chop it off without having a reference to the node before it. Thus, you’ll have to do an arduous traversal.
+
+removeLast requires you to traverse all the way down the list. This makes for an O(n) operation, which is relatively expensive.

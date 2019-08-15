@@ -95,18 +95,21 @@ extension LinkedList {
     return head?.value
   }
   
-  
-  discardableResult
-  public mutating func removeLast() -> Value? {
-    // 1
+  // REMOVE LAST
+  // Removing the last node of the list is somewhat inconvenient. Although you have a reference to the tail node, you can’t chop it off without having a reference to the node before it. Thus, you’ll have to do an arduous traversal.
+  @discardableResult public mutating func removeLast() -> Value? {
+    
+    // If head is nil there is nothing to remove so you return nil
     guard let head = head else {
       return nil
     }
-    // 2
+    
+    // If the list only consists of one node, removeLast is functionally equivalent to pop. Since pop will handle updating the head and tail references, you’ll just delegate this work to it.
     guard head.next != nil else {
       return pop()
     }
-    // 3
+    
+    // You keep searching for a next node until current.next is nil. This signifies that current is the last node of the list.
     var prev = head
     var current = head
     
@@ -114,9 +117,11 @@ extension LinkedList {
       prev = current
       current = next
     }
-    // 4
+    
+    // Since current is the last node, you simply disconnect it using the prev.next reference. You also make sure to update the tail reference.
     prev.next = nil
     tail = prev
+    
     return current.value
   }
 }
